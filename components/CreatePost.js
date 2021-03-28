@@ -36,46 +36,55 @@ const CreatePost = () => {
     input_field: {
       '& > *': {
         margin: theme.spacing(0),
-        width: '50ch',
+        marginBottom: 30,
+        width: '40vh',
       },
     },
     button_style: {
-      '& > *': {
-        margin: theme.spacing(0),
-        width: '53ch',
-      },
+      width: '40vh',
+      marginBottom: 20
     },
     root: {
       '& > *': {
-        marginLeft: '400px',
+        marginLeft: '10vh',
       },
     },
   }));
   const classes = useStyles();
   return (
 
-    <Container maxWidth="lg">
-      <AppBar></AppBar>
+    <Container>
       <Card>
         <CardContent>
           <div>
             <form className={classes.root} onSubmit={handleSubmit}>
-            <h2>Add Blog</h2>
+              <h2>Add Blog</h2>
               <p>{notification}</p>
-              <div>
-                <Typography color="textSecondary" gutterBottom>
-                  Title
-                </Typography>
-                <TextField variant="filled" id="filled-basic" className={classes.input_field} type="text" value={title} onChange={({target}) => setTitle(target.value)} />
-              </div>
-              <div>
-                <Typography color="textSecondary" gutterBottom>
-                  Content
-                </Typography>
-                <TextField variant="filled" id="filled-basic" className={classes.input_field} value={content} onChange={({target}) => setContent(target.value)} />
-              </div>
-              <br/>
-              <Button className={classes.button_style} type="submit" variant="contained" color="primary">Save</Button>
+              <TextField
+                className={classes.input_field}
+                label="Title"
+                variant="outlined"
+                value={title}
+                onChange={({ target }) => setTitle(target.value)}
+              />
+
+              <TextField
+                className={classes.input_field}
+                label="Content"
+                variant="outlined"
+                type="textarea"
+                value={content}
+                onChange={({ target }) => setContent(target.value)}
+              />
+              <Button
+                className={classes.button_style}
+                type="submit"
+                variant="contained"
+                color="primary"
+                size="large"
+              >
+                Save
+                </Button>
             </form>
           </div>
         </CardContent>

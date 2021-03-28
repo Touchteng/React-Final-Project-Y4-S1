@@ -9,6 +9,13 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Icon from '@material-ui/core/Icon';
+import SaveIcon from '@material-ui/icons/Save'
+
+import Link from 'next/link';
+
+// icons
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -39,14 +46,13 @@ const Login = () => {
     input_field: {
       '& > *': {
         margin: theme.spacing(0),
-        width: '50ch',
+        marginBottom: 30,
+        width: '40vh',
       },
     },
     button_style: {
-      '& > *': {
-        margin: theme.spacing(0),
-        width: '53ch',
-      },
+      width: '40vh',
+      marginBottom: 20
     },
     root: {
       '& > *': {
@@ -56,37 +62,54 @@ const Login = () => {
   }));
   const classes = useStyles();
   return (
-    <Container maxWidth="lg">
-    <AppBar>
-    </AppBar>
-    <Card>
-      <CardContent>
-        <div>
-          
-          {notify}
-          <form className={classes.root} onSubmit={handleLogin} >
-          <h1>Login</h1>
-            <Typography color="textSecondary" gutterBottom>
-              Email
-            </Typography>
-            <TextField id="filled-basic" className={classes.input_field} variant="filled" type="text" value={username} onChange={({target}) => setUsername(target.value)} />
-            <br />
-            <Typography color="textSecondary" gutterBottom>
-              Password
-            </Typography>
-            <TextField id="filled-basic" className={classes.input_field}  variant="filled" type="password" value={password} onChange={({target}) => setPassword(target.value)} />
-            <br />
-            <br/>
-            <Button className={classes.button_style} type="submit" variant="contained" color="primary">Login</Button>
-            <br/>
-            <a  href="/users/register">Register</a>
-          </form>
-        </div>
-      </CardContent>
-    </Card>
+    <Container>
+      <Card>
+        <CardContent>
+          <div>
+            {notify}
+            <form className={classes.root} onSubmit={handleLogin} >
+              <h1>Login</h1>
+              <TextField
+                className={classes.input_field}
+                label="Email"
+                variant="outlined"
+                value={username}
+                onChange={({ target }) => setUsername(target.value)}
+              />
+              <TextField
+                className={classes.input_field}
+                label="Password"
+                variant="outlined"
+                type="password"
+                value={password}
+                onChange={({ target }) => setPassword(target.value)}
+              />
+              <Button
+                className={classes.button_style}
+                type="submit"
+                variant="contained"
+                color="primary"
+                size="large"
+              >
+                Login
+              </Button>
+
+              <Button
+                className={classes.button_style}
+                type="submit"
+                color="primary"
+                size="large"
+              >
+                <Link href="/users/register">
+                  <a>Register</a>
+                </Link>
+              </Button>
+            </form>
+          </div>
+        </CardContent>
+      </Card>
     </Container>
   )
-
 }
 
 export default Login

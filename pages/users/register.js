@@ -1,4 +1,4 @@
-import { useState } from 'react'; 
+import { useState } from 'react';
 import fire from '../../config/fire-config';
 import { useRouter } from 'next/router'
 import Button from '@material-ui/core/Button';
@@ -10,6 +10,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Link from 'next/link';
 
 
 const Register = () => {
@@ -51,14 +52,13 @@ const Register = () => {
     input_field: {
       '& > *': {
         margin: theme.spacing(0),
-        width: '50ch',
+        marginBottom: 30,
+        width: '40vh',
       },
     },
     button_style: {
-      '& > *': {
-        margin: theme.spacing(0),
-        width: '53ch',
-      },
+      width: '40vh',
+      marginBottom: 20
     },
     root: {
       '& > *': {
@@ -69,40 +69,63 @@ const Register = () => {
   const classes = useStyles();
 
   return (
-
     <Container maxWidth="lg">
-      <AppBar></AppBar>
       <Card>
         <CardContent>
           <div>
-            
-            
+
+
             <form className={classes.root} onSubmit={handleLogin}>
               <h1>Create new user</h1>
-              <p>{notify}</p>
-              <Typography color="textSecondary" gutterBottom>
-                Email
-              </Typography>
-              <TextField id="filled-basic" className={classes.input_field} variant="filled" type="text" value={userName} onChange={({target}) => setUsername(target.value)} /> 
-              <br />
-              <Typography color="textSecondary" gutterBottom>
-                Password
-              </Typography>
-              <TextField id="filled-basic" className={classes.input_field}  variant="filled" type="password" value={password} onChange={({target}) => setPassword(target.value)} /> 
-              <br />
-              <Typography color="textSecondary" gutterBottom>
-                Confirm Password
-              </Typography>
-              <TextField id="filled-basic" className={classes.input_field}  variant="filled" type="password" value={passConf} onChange={({target}) => setPassConf(target.value)} /> 
-              <br />
-              <br/>
-              <Button className={classes.button_style} type="submit" variant="contained" color="primary">Register</Button>
+              <TextField
+                className={classes.input_field}
+                label="Email"
+                variant="outlined"
+                value={userName}
+                onChange={({ target }) => setUsername(target.value)}
+              />
+
+              <TextField
+                className={classes.input_field}
+                label="Password"
+                variant="outlined"
+                type="password"
+                value={password}
+                onChange={({ target }) => setPassword(target.value)}
+              />
+
+              <TextField
+                className={classes.input_field}
+                label="Password"
+                variant="outlined"
+                type="password"
+                value={passConf}
+                onChange={({ target }) => setPassConf(target.value)}
+              />
+              <Button
+                className={classes.button_style}
+                type="submit"
+                variant="contained"
+                color="primary"
+                size="large"
+              >
+                Register
+              </Button>
+
+              <Button
+                className={classes.button_style}
+                type="submit"
+                // variant="outlined"
+                color="primary"
+                size="large"
+              >
+                <Link href="/users/login">
+                  <a>Login</a>
+                </Link>
+              </Button>
             </form>
           </div>
         </CardContent>
-        <CardActions>
-          <Button variant="contained" color="primary" href="/users/login" size="small">Back to Login</Button>
-        </CardActions>
       </Card>
     </Container>
   )
