@@ -3,4 +3,4 @@
 - 1. `npm install`
 - 2. `npm start`
 
-*Replace firebase credentials in `src/config/fbConfig.js`
+*Replace firebase credentials in `src/config/fbConfig.js`*
